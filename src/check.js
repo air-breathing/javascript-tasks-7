@@ -57,9 +57,6 @@ function checkHasValues(values){
 }
 
 function checkHasValueType(key, type){
-    //такая конструкция дает false console.log(this[key] instanceof  type)
-    //такая же true console.log(Object.getPrototypeOf(this[key]) === type.prototype);
-    //в документации написано, что они эквивалентны. Почему?
     return Object.getPrototypeOf(this[key]) == type.prototype
 }
 
