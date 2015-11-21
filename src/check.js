@@ -1,13 +1,13 @@
 'use strict';
 
-function checkHasKeys (keys){
+function checkHasKeys(keys) {
     var requiredKeys = keys;
     var actiualKeys = Object.keys(this);
-    if (requiredKeys.length != actiualKeys.length){
+    if (requiredKeys.length != actiualKeys.length) {
         return false;
     }
     return requiredKeys.every(
-        function (currentValue){
+        function (currentValue) {
             return this.hasOwnProperty(currentValue);
         },
         this
@@ -17,7 +17,7 @@ function checkHasKeys (keys){
 function checkContainsKeys (keys) {
     return keys.every(
         function (currentValue){
-            if (this.hasOwnProperty(currentValue)){
+            if (this.hasOwnProperty(currentValue)) {
                 return true;
             }
             return false;
@@ -26,7 +26,7 @@ function checkContainsKeys (keys) {
     )
 }
 
-function checkContainsValues (values){
+function checkContainsValues(values) {
     //массив со значениями
     return values.every(
         function (currentValue){
@@ -41,11 +41,11 @@ function checkContainsValues (values){
     )
 }
 
-function checkHasValues(values){
+function checkHasValues(values) {
     return (values.length === Object.keys(this).length) &&
         (values.every(
             function (currentValue){
-                for (var i in this) if (this.hasOwnProperty(i)){
+                for (var i in this) if (this.hasOwnProperty(i)) {
                     if (currentValue === this[i]) {
                         return true;
                     }
@@ -56,19 +56,22 @@ function checkHasValues(values){
         ))
 }
 
-function checkHasValueType(key, type){
+function checkHasValueType(key, type) {
+    //такая конструкция дает false console.log(this[key] instanceof  type)
+    //такая же true console.log(Object.getPrototypeOf(this[key]) === type.prototype);
+    //в документации написано, что они эквивалентны. Почему?
     return Object.getPrototypeOf(this[key]) == type.prototype
 }
 
-function checkHasLength(length){
+function checkHasLength(length) {
     return this.length == length;
 }
 
-function checkHasParamsCount(count){
+function checkHasParamsCount(count) {
     return this.length == count;
 }
 
-function checkHasWordsCount(count){
+function checkHasWordsCount(count) {
     return this.split(/\s+/).length == count;
 }
 
