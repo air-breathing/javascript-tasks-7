@@ -30,14 +30,15 @@ function checkContainsValues(values) {
     //массив со значениями
     return values.every(
         function (currentValue) {
-            for (var i in this) if (this.hasOwnProperty(i)) {
-                if (currentValue === this[i]) {
-                    return true;
+            for (var i in this) {
+                if (this.hasOwnProperty(i)) {
+                    if (currentValue === this[i]) {
+                        return true;
+                    }
                 }
             }
             return false;
-        }
-        ,this
+        }, this
     );
 }
 
@@ -45,14 +46,15 @@ function checkHasValues(values) {
     return (values.length === Object.keys(this).length) &&
         (values.every(
             function (currentValue) {
-                for (var i in this) if (this.hasOwnProperty(i)) {
-                    if (currentValue === this[i]) {
-                        return true;
+                for (var i in this) {
+                    if (this.hasOwnProperty(i)) {
+                        if (currentValue === this[i]) {
+                            return true;
+                        }
                     }
                 }
                 return false;
-            }
-            ,this
+            }, this
         ));
 }
 
