@@ -11,26 +11,26 @@ function checkHasKeys(keys) {
             return this.hasOwnProperty(currentValue);
         },
         this
-    )
+    );
 }
 
-function checkContainsKeys (keys) {
+function checkContainsKeys(keys) {
     return keys.every(
-        function (currentValue){
+        function (currentValue) {
             if (this.hasOwnProperty(currentValue)) {
                 return true;
             }
             return false;
         },
         this
-    )
+    );
 }
 
 function checkContainsValues(values) {
     //массив со значениями
     return values.every(
-        function (currentValue){
-            for (var i in this) if (this.hasOwnProperty(i)){
+        function (currentValue) {
+            for (var i in this) if (this.hasOwnProperty(i)) {
                 if (currentValue === this[i]) {
                     return true;
                 }
@@ -38,13 +38,13 @@ function checkContainsValues(values) {
             return false;
         }
         ,this
-    )
+    );
 }
 
 function checkHasValues(values) {
     return (values.length === Object.keys(this).length) &&
         (values.every(
-            function (currentValue){
+            function (currentValue) {
                 for (var i in this) if (this.hasOwnProperty(i)) {
                     if (currentValue === this[i]) {
                         return true;
@@ -53,14 +53,14 @@ function checkHasValues(values) {
                 return false;
             }
             ,this
-        ))
+        ));
 }
 
 function checkHasValueType(key, type) {
     //такая конструкция дает false console.log(this[key] instanceof  type)
     //такая же true console.log(Object.getPrototypeOf(this[key]) === type.prototype);
     //в документации написано, что они эквивалентны. Почему?
-    return Object.getPrototypeOf(this[key]) == type.prototype
+    return Object.getPrototypeOf(this[key]) == type.prototype;
 }
 
 function checkHasLength(length) {
